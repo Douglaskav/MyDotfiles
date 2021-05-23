@@ -1,0 +1,33 @@
+#! /bin/sh
+
+# Start the keybidings
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+# Fix the cursor X trouble
+xsetroot -cursor_name left_ptr &
+
+# Set background image
+feh --randomize ~/Pictures/Wallpapers --bg-scale
+# feh --bg-scale ~/Pictures/florest-stair2.jpg
+
+# Polybar launch
+~/.config/polybar/blocks/launch.sh
+
+# Workstations
+bspc monitor -d I II III IV
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a feh state=floating follow=on
+bspc rule -a Pcmanfm state=floating follow=on
+bspc rule -a St state=floating
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off

@@ -4,16 +4,24 @@
 
 # terminal emulator
 super + Return
-	st	
+	termite	
 
 # program launcher
 super + d
 	rofi -show drun 
 
+# open-programs launcher
+super + h
+  rofi -show window
+
 # Launch the file manager
 super + u
   pcmanfm
   
+# Do a printscreen
+Print
+  scrot -s
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd

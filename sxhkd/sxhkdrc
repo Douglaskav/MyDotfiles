@@ -4,15 +4,15 @@
 
 # terminal emulator
 super + Return
-	termite	
+	st	
 
 # program launcher
 super + d
-	rofi -show drun 
+	rofi -show drun -theme $HOME/.material/material.rasi 
 
 # open-programs launcher
 super + h
-  rofi -show window
+  rofi -show window -theme $HOME/.material/material.rasi
 
 # Launch the file manager
 super + u
@@ -132,15 +132,13 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# 
 # volume
-#
 
-{XF86AudioLowerVolume} 
-  amixer -q sset Master 5-
+XF86AudioLowerVolume
+	pactl set-sink-volume @DEFAULT_SINK@ -5%
 
-{XF86AudioRaiseVolume} 
-  amixer -q set Master 5+
+XF86AudioRaiseVolume
+	pactl set-sink-volume @DEFAULT_SINK@ +5%
 
-{XF86AudioMute}
-  $(amixer get Master | grep off > /dev/null && amixer -q set Master unmute) || amixer -q set Master mute
+XF86AudioMute
+	pactl set-sink-mute 0 toggle
